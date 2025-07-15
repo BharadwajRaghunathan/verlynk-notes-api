@@ -1,0 +1,28 @@
+{
+  "name": "verlynk-notes-api",
+  "version": "1.0.0",
+  "description": "Notes API for Verlynk intern assignment",
+  "main": "src/app.js",
+  "scripts": {
+    "start": "node src/app.js",
+    "dev": "nodemon src/app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BharadwajRaghunathan/verlynk-notes-api.git"
+  },
+  "keywords": [],
+  "author": "Bharadwaj Raghunathan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/BharadwajRaghunathan/verlynk-notes-api/issues"
+  },
+  "homepage": "https://github.com/BharadwajRaghunathan/verlynk-notes-api#readme",
+  "dependencies": {
+    "express": "^5.1.0",
+    "uuid": "^11.1.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.10"
+  }
+}

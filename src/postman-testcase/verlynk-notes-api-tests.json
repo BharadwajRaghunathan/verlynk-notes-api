@@ -1,0 +1,250 @@
+{
+  "info": {
+    "name": "Verlynk Notes API Tests",
+    "_postman_id": "verlynk-notes-api-tests",
+    "description": "A Postman collection for testing the Notes API endpoints. Run in sequence using Collection Runner to test the full flow: create, read, update, delete, and error cases.\n\nBase URL: http://localhost:3000\n\nNo authentication or tokens required.\n\nSequence:\n1. Get all notes (empty initially).\n2. Create a valid note.\n3. Get all notes (should have 1).\n4. Get specific note by ID.\n5. Update the note.\n6. Get the updated note.\n7. Delete the note.\n8. Get all notes (empty again).\n9. Error: Create invalid note (missing fields).\n10. Error: Get non-existent note.\n11. Error: Update non-existent note.\n12. Error: Update invalid note (missing fields).\n13. Error: Delete non-existent note.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "1. GET All Notes (Empty)",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/notes",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["notes"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "2. POST New Note (Valid)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"title\": \"Test Note\",\n    \"content\": \"This is a test note content.\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:3000/notes",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["notes"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "3. GET All Notes (After Create)",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/notes",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["notes"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "4. GET Specific Note by ID (ID=1)",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/notes/1",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["notes", "1"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "5. PUT Update Note (Valid, ID=1)",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"title\": \"Updated Test Note\",\n    \"content\": \"This is updated content.\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:3000/notes/1",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["notes", "1"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "6. GET Updated Note (ID=1)",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/notes/1",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["notes", "1"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "7. DELETE Note (ID=1)",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/notes/1",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["notes", "1"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "8. GET All Notes (After Delete)",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/notes",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["notes"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "9. POST New Note (Invalid - Missing Fields)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"title\": \"Only Title\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:3000/notes",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["notes"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "10. GET Non-Existent Note (ID=999)",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/notes/999",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["notes", "999"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "11. PUT Update Non-Existent Note (ID=999)",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"title\": \"Update\",\n    \"content\": \"Non-existent\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:3000/notes/999",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["notes", "999"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "12. PUT Update Invalid (Missing Fields, ID=1 - but after delete)",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"content\": \"Only Content\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:3000/notes/1",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["notes", "1"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "13. DELETE Non-Existent Note (ID=999)",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/notes/999",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["notes", "999"]
+        }
+      },
+      "response": []
+    }
+  ]
+}
